@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>Client Manager</title>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                </head>
+                <body>
+                    <div align = "center"> 
+                        <h1>Client Manager</h1>
+                    
+                        <a href="new_cient.html" th:href="@{/new}">Add new client</a>
+                        <br/><br/>
+                        <table border = 1>
+                            <thead><tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Mail</th>
+                                    <th>Phone number</th>
+                                    <th>Action</th>
+
+                                </tr></thead>
+                            <tbody>
+                                <tr th:each="client : ${listClient}">
+                                    <td th:text="${client.id}">Id</td>
+                                    <td th:text="${client.name}">Firstname</td>
+                                    <td th:text="${client.mail}">Lastname</td>
+                                    <td th:text="${client.poneNumber}">Age</td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </body>
+                </html>

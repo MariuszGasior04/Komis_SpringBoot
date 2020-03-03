@@ -3,36 +3,36 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pl.altkom.service;
+package pl.altkom.repository.impl;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.altkom.model.Person;
-import pl.altkom.repository.PersonRepository;
+import pl.altkom.entity.Client;
+import pl.altkom.repository.ClientRepository;
 
 /**
  *
  * @author mgasior
  */
 @Service
-public class PersonService {
-    @Autowired
-    private PersonRepository repo;
+public class ClientRepositoryImpl{
     
-    public List<Person> listAll(){
+    @Autowired
+    private ClientRepository repo;
+    
+    public List<Client> listAll(){
         return repo.findAll();
     }
     
-    public void save(Person person){
-        repo.save(person);
+    public void save(Client client){
+        repo.save(client);
     }
     
-    public Person get(Long id){
+    public Client get(Long id){
         return repo.findById(id).get();
     }
-    public void delete(Long id){
-        repo.deleteById(id);
-    }
-}
     
+    public void delete(Long id){
+        repo.deleteById(id);}
+}

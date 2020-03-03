@@ -6,12 +6,14 @@
 package pl.altkom.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pl.altkom.model.Person;
+import org.springframework.stereotype.Repository;
+import pl.altkom.entity.Client;
 
 /**
  *
  * @author mgasior
  */
-public interface PersonRepository extends JpaRepository<Person, Long>{
+@Repository
+public interface ClientRepository extends JpaRepository<Client, Long>{
     
 }
