@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pl.altkom.repository;
+package pl.altkom.komis.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import pl.altkom.entity.Client;
+import pl.altkom.komis.entity.Client;
 
 /**
  *

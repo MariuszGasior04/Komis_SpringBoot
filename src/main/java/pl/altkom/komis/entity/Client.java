@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pl.altkom.entity;
+package pl.altkom.komis.entity;
 
 
 import javax.persistence.Column;
@@ -21,7 +21,7 @@ import javax.validation.constraints.NotBlank;
 public class Client {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
     
     @NotBlank(message = "Firstname is mandatory")
@@ -32,7 +32,7 @@ public class Client {
     private String mail;
     
     @Column(name = "phone_nr")
-    private int poneNumber;
+    private int phoneNumber;
 
     public Client() {
     }
@@ -61,13 +61,17 @@ public class Client {
         this.mail = mail;
     }
 
-    public int getPoneNumber() {
-        return poneNumber;
+    public int getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPoneNumber(int poneNumber) {
-        this.poneNumber = poneNumber;
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
+
+    
+
+    
     
     
 }
