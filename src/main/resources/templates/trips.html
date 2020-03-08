@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>Trip Manager</title>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                </head>
+                <body>
+                    <div align = "center"> 
+                        <h1>Trip Manager</h1>
+                        <a th:href="@{/}">Back to menu</a>
+                        <br/><br/>
+                        <a th:href="@{/trips/new}">Add new trip</a>
+                        <br/><br/>
+                        <table border = 1>
+                            <thead><tr>
+                                    <th>Id</th>
+                                    <th>Car</th>
+                                    <th>Client</th>
+                                    <th>Departure date</th>
+                                    <th>Arrival date</th>
+                                    <th>Destination</th>
+                                    <th>Distance</th>
+                                    <th>Refueling</th>
+                                    <th>Action</th>
+                                </tr></thead>
+                            <tbody>
+                                <tr th:each="trip : ${listTrips}">
+                                    <td th:text="${trip.id}">Id</td>
+                                    <td th:text="${trip.car}">Car</td>
+                                    <td th:text="${trip.client}">Client</td>
+                                    <td th:text="${trip.startDate}">Departure date</td>
+                                    <td th:text="${trip.endDate}">Arrival date</td>
+                                    <td th:text="${trip.destination}">Destination</td>
+                                    <td th:text="${trip.distance}">Distance</td>
+                                    <td th:text="${trip.refuel}">Refueling</td>
+                                    <td>
+                                        <a th:href="@{/trips/edit/{id}(id=${trip.id})}">Edit</a>
+                                        &nbsp;&nbsp;&nbsp;
+                                        <a th:href="@{/trips/delete/{id}(id=${trip.id})}">Delete</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </body>
+                </html>

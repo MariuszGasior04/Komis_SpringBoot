@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
@@ -13,9 +8,13 @@ and open the template in the editor.
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 </head>
                 <body>
-                    <h1>Komis</h1>
-                    <a th:href="@{/clients/list}">Klienci</a>
-                    <br/><br/>
-                    <a th:href="@{/cars/list}">Auta</a>
+                    <div align = "center">
+                        <h1>Komis</h1>
+                        <a th:href="@{/clients/list}">Client Registry</a>
+                        <br/><br/>
+                        <a th:href="@{/cars/list}">Car Registry</a>
+                        <br/><br/>
+                        <a th:href="@{/trips/list}">Trip Registry</a>
+                    </div>
                 </body>
                 </html>

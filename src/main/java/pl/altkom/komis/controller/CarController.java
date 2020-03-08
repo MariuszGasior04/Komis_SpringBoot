@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package pl.altkom.komis.controller;
 
 import java.util.List;
@@ -27,7 +23,7 @@ import pl.altkom.komis.repository.CarRepository;
 public class CarController {
 
     @Autowired
-    private CarRepository repo;
+    private final CarRepository repo;
 
     @Autowired
     public CarController(CarRepository carRepository) {
@@ -65,6 +61,6 @@ public class CarController {
     @RequestMapping("delete/{id}")
     public String deleteCar(@PathVariable(name = "id") long id) {
         repo.deleteById(id);
-        return "redirect:/car/list";
+        return "redirect:/cars/list";
     }
 }

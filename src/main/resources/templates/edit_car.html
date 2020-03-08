@@ -9,7 +9,7 @@
         <div align="center">
             <h1>Edit Car</h1>
             <br />
-            <form action="#" th:action="@{/car/save}" th:object="${car}"
+            <form action="#" th:action="@{/cars/save}" th:object="${car}"
                   method="post">
 
                 <table border="0" cellpadding="10">
@@ -18,7 +18,7 @@
                         <td>
                             <input type="text" th:field="*{id}" readonly="readonly" />
                         </td>
-                    </tr>        
+                    </tr> 
                     <tr>
                         <td>Registration number:</td>
                         <td><input type="text" th:field="*{regNumber}" /></td>
@@ -38,7 +38,7 @@
                     <tr>
                         <td>Distance:</td>
                         <td><input type="number" th:field="*{distance}" /></td>
-                    </tr>                                    
+                    </tr>  
                     <tr>
                         <td colspan="2"><button type="submit">Save</button> </td>
                     </tr>

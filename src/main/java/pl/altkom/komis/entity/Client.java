@@ -1,16 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package pl.altkom.komis.entity;
 
 
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
 /**
@@ -21,10 +19,10 @@ import javax.validation.constraints.NotBlank;
 public class Client {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     
-    @NotBlank(message = "Firstname is mandatory")
+    @NotBlank(message = "Name is mandatory")
     @Column(name = "name")
     private String name;
 
@@ -32,10 +30,21 @@ public class Client {
     private String mail;
     
     @Column(name = "phone_nr")
-    private int phoneNumber;
-
+    private long phoneNumber;
+    
+//    @OneToMany(mappedBy="client")
+//    private List<Trip> trips;
+    
     public Client() {
     }
+
+//    public List<Trip> getTrips() {
+//       return trips;
+//    }
+//
+//    public void setTrips(List<Trip> trips) {
+//        this.trips = trips;
+//    }
 
     public long getId() {
         return id;
@@ -61,12 +70,17 @@ public class Client {
         this.mail = mail;
     }
 
-    public int getPhoneNumber() {
+    public long getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    @Override
+    public String toString() {
+        return  name;
     }
 
     

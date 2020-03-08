@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <title>Edit Trip</title>
+    </head>
+    <body>
+        <div align="center">
+            <h1>Edit Trip</h1>
+            <br />
+            <form action="#" th:action="@{/trips/update}" th:object="${trip}"
+                  method="post">
+
+                <table border="0" cellpadding="10">
+                    <tr>             
+                        <td>Trip ID:</td>
+                        <td>
+                            <input type="text" th:field="*{id}" readonly="readonly" />
+                        </td>
+                    </tr> 
+                    <tr>
+                        <td>Car:</td>
+                        <td><select th:field="*{car}">
+                                <option value=""> -- </option>
+                                <option th:each="car : ${listCar}"
+                                        th:value="${car.id}"
+                                        th:text="${car.regNumber +' - '+car.brand +' '+car.type}"/>
+                            </select></td>                    
+                    </tr>
+                    <tr>
+                        <td>Client:</td>
+                        <td><select th:field="*{client}">
+                                <option value=""> -- </option>
+                                <option th:each="client : ${listClient}"
+                                        th:value="${client.id}"
+                                        th:text="${client.name}"/>
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <td>Departure date</td>
+                        <td><input type="date" th:field="*{startDate}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Arrival date</td>
+                        <td><input type="date" th:field="*{endDate}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Destination:</td>
+                        <td><input type="text" th:field="*{destination}" /></td>
+                    </tr>  
+                    <tr>
+                        <td>Distance:</td>
+                        <td><input type="number" th:field="*{distance}" /></td>
+                    </tr> 
+                    <tr>
+                        <td>Refueling:</td>
+                        <td><input type="number" th:field="*{refuel}" /></td>
+                    </tr> 
+                    <tr>                        
+                        <td colspan="2"><button type="submit">Save</button> </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </body>
+</html>

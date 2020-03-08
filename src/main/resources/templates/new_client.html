@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -24,13 +19,13 @@ and open the template in the editor.
                 </tr>
                 <tr>
                     <td>Mail:</td>
-                    <td><input type="text" th:field="*{mail}" /></td>
+                    <td><input type="email" th:field="*{mail}" /></td>
                 </tr>
                 <tr>
                     <td>Phone number:</td>
                     <td><input type="text" th:field="*{phoneNumber}" /></td>
                 </tr>                           
-                <tr>
+                <tr>                
                     <td colspan="2"><button type="submit">Save</button> </td>
                 </tr>
             </table>

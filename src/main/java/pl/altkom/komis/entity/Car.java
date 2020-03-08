@@ -1,15 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package pl.altkom.komis.entity;
 
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
 /**
@@ -20,7 +18,7 @@ import javax.validation.constraints.NotBlank;
 public class Car {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     
     @NotBlank(message = "Brand is mandatory")
@@ -39,10 +37,21 @@ public class Car {
     private int year;
     
     @Column(name = "distance")
-    private String distance;
-
+    private long distance;
+    
+//    @OneToMany(mappedBy="car")
+//    private List<Trip> trips;
+    
     public Car() {
     }
+
+//    public List<Trip> getTrips() {
+//        return trips;
+//    }
+//
+//    public void setTrips(List<Trip> trips) {
+//        this.trips = trips;
+//    }
 
     public String getRegNumber() {
         return regNumber;
@@ -56,7 +65,7 @@ public class Car {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -84,15 +93,18 @@ public class Car {
         this.year = year;
     }
 
-    public String getDistance() {
+    public long getDistance() {
         return distance;
     }
 
-    public void setDistance(String distance) {
+    public void setDistance(long distance) {
         this.distance = distance;
     }
 
     
-    
+    @Override
+    public String toString() {
+        return regNumber + " - " + brand + " " + type;
+    }
     
 }
