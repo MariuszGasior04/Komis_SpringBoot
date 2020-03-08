@@ -8,39 +8,14 @@ and open the template in the editor.
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
     <head>
-        <title>Client Manager</title>
+        <title>Komis</title>
         <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 </head>
                 <body>
-                    <div align = "center"> 
-                        <h1>Client Manager</h1>
-
-                        <a th:href="@{/new}">Add new client</a>
-                        <br/><br/>
-                        <table border = 1>
-                            <thead><tr>
-                                    <th>Id</th>
-                                    <th>Name</th>
-                                    <th>Mail</th>
-                                    <th>Phone number</th>
-                                    <th>Action</th>
-
-                                </tr></thead>
-                            <tbody>
-                                <tr th:each="client : ${listClient}">
-                                    <td th:text="${client.id}">Id</td>
-                                    <td th:text="${client.name}">Name</td>
-                                    <td th:text="${client.mail}">Mail</td>
-                                    <td th:text="${client.phoneNumber}">Phone number</td>
-                                    <td>
-                                        <a th:href="@{/edit/{id}(id=${client.id})}">Edit</a>
-                                        &nbsp;&nbsp;&nbsp;
-                                        <a th:href="@{/delete/{id}(id=${client.id})}">Delete</a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <h1>Komis</h1>
+                    <a th:href="@{/clients/list}">Klienci</a>
+                    <br/><br/>
+                    <a th:href="@{/cars/list}">Auta</a>
                 </body>
                 </html>

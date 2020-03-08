@@ -23,6 +23,7 @@ import pl.altkom.komis.repository.ClientRepository;
  * @author mgasior
  */
 @Controller
+@RequestMapping("/clients/")
 public class ClientController {
 
     @Autowired
@@ -33,29 +34,27 @@ public class ClientController {
         this.repo = clientRepository;
     }
 
-    @RequestMapping("/")
-    public String ViewHomePage(Model model) {
+    @RequestMapping("list")
+    public String viewClients(Model model) {
         List<Client> listClient = repo.findAll();
         model.addAttribute("listClient", listClient);
-        return "index";
+        return "clients";
     }
 
-    @GetMapping("/new")
+    @GetMapping("new")
     public String showAddNewClientPage(Model model) {
         Client client = new Client();
         model.addAttribute("client", client);
-
         return "new_client";
     }
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @RequestMapping(value = "save", method = RequestMethod.POST)
     public String saveClient(@ModelAttribute("client") Client client) {
         repo.save(client);
-
-        return "redirect:/";
+        return "redirect:/clients/list";
     }
 
-    @RequestMapping("/edit/{id}")
+    @RequestMapping("edit/{id}")
     public ModelAndView showEditClientPage(@PathVariable(name = "id") long id) {
         ModelAndView mav = new ModelAndView("edit_client");
         Client client = repo.findById(id).get();
@@ -63,9 +62,9 @@ public class ClientController {
         return mav;
     }
 
-    @RequestMapping("/delete/{id}")
+    @RequestMapping("delete/{id}")
     public String deleteClient(@PathVariable(name = "id") long id) {
         repo.deleteById(id);
-        return "redirect:/";
+        return "redirect:/clients/list";
     }
 }
