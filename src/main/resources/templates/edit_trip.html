@@ -23,6 +23,7 @@
                         <td>Car:</td>
                         <td><select th:field="*{car}">
                                 <option value=""> -- </option>
+                                
                                 <option th:each="car : ${listCar}"
                                         th:value="${car.id}"
                                         th:text="${car.regNumber +' - '+car.brand +' '+car.type}"/>

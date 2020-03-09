@@ -1,4 +1,3 @@
-
 package pl.altkom.komis.service;
 
 import java.time.LocalDate;
@@ -24,7 +23,7 @@ public class DataGenerator {
 
     @Autowired
     private final CarRepository repoCar;
-    
+
     @Autowired
     private final ClientRepository repoClient;
 
@@ -36,54 +35,42 @@ public class DataGenerator {
     }
 
     @PostConstruct
-    public void createSomeData(){
-        Car car1= new Car();
-        Car car2= new Car();
-        Car car3= new Car();
-        car1.setId(1);
-        car1.setBrand("Opel");
-        car1.setType("Insignia");
-        car1.setRegNumber("KR8M321");
-        car1.setYear(2018);
-        car1.setDistance(50000);
-        car2.setId(2);
-        car2.setBrand("Skoda");
-        car2.setType("Rapid");
-        car2.setRegNumber("KT2M000");
-        car2.setYear(2020);
-        car2.setDistance(100);
-        car3.setId(3);
-        car3.setBrand("Honda");
-        car3.setType("Civic");
-        car3.setRegNumber("KT4K012");
-        car3.setYear(2015);
-        car3.setDistance(200000);
-       repoCar.save(car1);
-       repoCar.save(car2);
-       repoCar.save(car3);
-       Client client1 = new Client();
-       Client client2 = new Client();
-       client1.setId(1);
-       client1.setName("Jan Kowalski");
-       client1.setMail("jk@gmail.com");
-       client1.setPhoneNumber(123456789);
-       client2.setId(2);
-       client2.setName("Anna Nowak");
-       client2.setMail("an@gmail.com");
-       client2.setPhoneNumber(660660660);
-       repoClient.save(client1);
-       repoClient.save(client2);
-       
-//       Trip trip1 = new Trip();
-//       trip1.setId(1);
-//       trip1.setCar(car3);
-//       trip1.setClient(client2);
-//       trip1.setDestination("Kraków-Tarnów-Kraków");
-//       trip1.setDistance(205);
-//       trip1.setStartDate(LocalDate.of(2020,2,2));
-//       trip1.setEndDate(LocalDate.of(2020,2,2));
-//       trip1.setRefuel(0.0);
-//       repoTrip.save(trip1);
-       
+    public void createSomeData() {
+        Car car1 = new Car("Opel", "Insignia", "KR8M321", 2018, 50000);
+        Car car2 = new Car("Skoda", "Rapid", "KT2M000", 2020, 100);
+        Car car3 = new Car("Honda", "Civic", "KT4K012", 2015, 20000);
+        repoCar.save(car1);
+        repoCar.save(car2);
+        repoCar.save(car3);
+        Client client1 = new Client("Jan Kowalski", "jk@gmail.com", 123456789);
+        Client client2 = new Client("Anna Nowak", "an@gmail.com", 660660660);
+        Client client3 = new Client("Adam Pan", "ap@gmail.com", 800800800);
+        Client client4 = new Client("Tom Jerry", "tr@gmail.com", 663663663);
+        repoClient.save(client1);
+        repoClient.save(client2);
+        repoClient.save(client3);
+        repoClient.save(client4);
+        Trip trip = new Trip(car3, client2, LocalDate.of(2020, 2, 20), LocalDate.of(2020, 2, 20), "Kraków-Tarnów-Kraków", 200, 0);
+        Trip trip1 = new Trip(car1, client1, LocalDate.of(2020, 2, 21), LocalDate.of(2020, 2, 21), "Kraków-Wrocław-Kraków", 535, 0);
+        Trip trip2 = new Trip(car3, client3, LocalDate.of(2020, 2, 23), LocalDate.of(2020, 2, 23), "Kraków-Tarnów-Kraków", 200, 0);
+        Trip trip3 = new Trip(car2, client1, LocalDate.of(2020, 2, 24), LocalDate.of(2020, 2, 24), "Tarnów-Kraków", 90, 0);
+        Trip trip4 = new Trip(car3, client2, LocalDate.of(2020, 2, 26), LocalDate.of(2020, 2, 26), "Kraków-Tarnów-Kraków", 200, 0);
+        Trip trip5 = new Trip(car1, client2, LocalDate.of(2020, 2, 28), LocalDate.of(2020, 2, 28), "Kraków-Sanok-Kraków", 500, 40);
+        Trip trip6 = new Trip(car3, client4, LocalDate.of(2020, 3, 2), LocalDate.of(2020, 3, 3), "Kraków-Warszawa-Kraków", 600, 40);
+        Trip trip7 = new Trip(car1, client1, LocalDate.of(2020, 3, 4), LocalDate.of(2020, 3, 4), "Kraków-Poznań-Kraków", 920, 30);
+        Trip trip8 = new Trip(car3, client2, LocalDate.of(2020, 3, 7), LocalDate.of(2020, 3, 7), "Kraków-Lublin-Kraków", 620, 0);
+        Trip trip9 = new Trip(car1, client3, LocalDate.of(2020, 3, 8), LocalDate.of(2020, 3, 8), "Kraków-Warszawa-Kraków", 600, 0);
+        Trip trip10 = new Trip(car3, client3, LocalDate.of(2020, 3, 9), LocalDate.of(2020, 3, 10), "Kraków-Rzeszów-Kraków", 335, 40);
+        repoTrip.save(trip);
+        repoTrip.save(trip1);
+        repoTrip.save(trip2);
+        repoTrip.save(trip3);
+        repoTrip.save(trip4);
+        repoTrip.save(trip5);
+        repoTrip.save(trip6);
+        repoTrip.save(trip7);
+        repoTrip.save(trip8);
+        repoTrip.save(trip9);
+        repoTrip.save(trip10);
     }
 }

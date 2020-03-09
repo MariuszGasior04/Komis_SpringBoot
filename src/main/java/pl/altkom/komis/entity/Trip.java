@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -22,11 +22,11 @@ public class Trip {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name="car_id", nullable=false)
     private Car car;
     
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name="client_id", nullable=false)
     private Client client;
     
@@ -40,15 +40,23 @@ public class Trip {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate endDate;
     
-    @NotBlank(message = "Destination is mandatory")
     private String destination;
     
-    @NotBlank(message = "Distance is mandatory")
     private long distance;
     
     private double refuel;
 
     public Trip() {
+    }
+
+    public Trip(Car car, Client client, LocalDate startDate, LocalDate endDate, String destination, long distance, double refuel) {
+        this.car = car;
+        this.client = client;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.destination = destination;
+        this.distance = distance;
+        this.refuel = refuel;
     }
 
     public long getId() {

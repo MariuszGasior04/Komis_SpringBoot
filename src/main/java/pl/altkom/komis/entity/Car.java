@@ -39,19 +39,17 @@ public class Car {
     @Column(name = "distance")
     private long distance;
     
-//    @OneToMany(mappedBy="car")
-//    private List<Trip> trips;
-    
+
     public Car() {
     }
 
-//    public List<Trip> getTrips() {
-//        return trips;
-//    }
-//
-//    public void setTrips(List<Trip> trips) {
-//        this.trips = trips;
-//    }
+    public Car(String brand, String type, String regNumber, int year, long distance) {
+        this.brand = brand;
+        this.type = type;
+        this.regNumber = regNumber;
+        this.year = year;
+        this.distance = distance;
+    }
 
     public String getRegNumber() {
         return regNumber;

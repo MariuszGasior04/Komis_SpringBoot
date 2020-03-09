@@ -64,18 +64,18 @@ public class TripController {
         Car tripCar = trip.getCar();
         tripCar.setDistance(tripCar.getDistance() + trip.getDistance());
         repoCar.save(tripCar);
-        
         repoTrip.save(trip);
         return "redirect:/trips/list";
     }
 
 
     @RequestMapping(value = "update", method = RequestMethod.POST)
-    public String updateTrip(@ModelAttribute("trip") Trip trip, @ModelAttribute("tripDist") long tripDist) {
+    public String updateTrip(@ModelAttribute("trip") Trip trip) {
         Car tripCar = trip.getCar();
-        tripCar.setDistance(tripCar.getDistance() + trip.getDistance() - tripDist);
-        repoCar.save(tripCar);
+        Trip updatedTrip = repoTrip.getOne(trip.getId());
+        tripCar.setDistance(tripCar.getDistance() + trip.getDistance() - updatedTrip.getDistance());
         
+        repoCar.save(tripCar);
         repoTrip.save(trip);
         return "redirect:/trips/list";
     }
@@ -85,8 +85,12 @@ public class TripController {
     public ModelAndView showEditTripPage(@PathVariable(name = "id") long id) {
         ModelAndView mav = new ModelAndView("edit_trip");
         Trip trip = repoTrip.findById(id).get();
-        mav.addObject("tripDist", trip.getDistance());
+        List<Client> listClient = repoClient.findAll();
+        List<Car> listCar = repoCar.findAll();
+        mav.addObject("listClient",listClient);
+        mav.addObject("listCar", listCar);       
         mav.addObject("trip", trip);
+        
         return mav;
     }
 

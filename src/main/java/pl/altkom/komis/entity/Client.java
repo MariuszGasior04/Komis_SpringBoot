@@ -32,19 +32,14 @@ public class Client {
     @Column(name = "phone_nr")
     private long phoneNumber;
     
-//    @OneToMany(mappedBy="client")
-//    private List<Trip> trips;
-    
     public Client() {
     }
 
-//    public List<Trip> getTrips() {
-//       return trips;
-//    }
-//
-//    public void setTrips(List<Trip> trips) {
-//        this.trips = trips;
-//    }
+    public Client(String name, String mail, long phoneNumber) {
+        this.name = name;
+        this.mail = mail;
+        this.phoneNumber = phoneNumber;
+    }
 
     public long getId() {
         return id;
