@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <title>Car month report</title>
+    </head>
+    <body>
+        <div align="center">
+            <h1>Car month report</h1>
+            <h2>Chose params</h2>
+            <br />
+            <form action="#" th:action="@{/reports/car_month_report_params}" th:object="${report}" 
+                  method="post">
+
+                <table border="0" cellpadding="10">
+                    <tr>
+                        <td>Car:</td>
+                        <td>
+                            <select th:field="*{car}">
+                                <option value=""> -- </option>
+                                <option th:each="car : ${listCar}"
+                                        th:value="${car.id}"
+                                        th:text="${car.regNumber +' - '+car.brand +' '+car.type}"/>
+                            </select>
+                        </td>                    
+                    </tr>                    
+                    <tr>
+                        <td>Month</td>
+                        <td><input type="date" th:field="*{date}" /></td>
+                    </tr>
+                    
+                    <tr>                        
+                        <td colspan="2"><button type="submit">Create report</button> </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </body>
+</html>

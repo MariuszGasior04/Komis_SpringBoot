@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>Car Month Report</title>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                </head>
+                <body>
+                    <div align = "center"> 
+                        <h1>Car Month Report</h1>
+                        <a th:href="@{/}">Back to menu</a>
+                        <br/><br/>
+                        <h3 th:text="${car.regNumber +' - '+car.brand +' '+car.type}"></h3>
+                        <h3 th:text="${month + ' ' + year}"></h3>
+                        <table border = 1>
+                            <thead><tr>
+                                    <th>Client</th>
+                                    <th>Departure date</th>
+                                    <th>Arrival date</th>
+                                    <th>Destination</th>
+                                    <th>Distance</th>
+                                    <th>Refueling</th>
+                                </tr></thead>
+                            <tbody>
+                                <tr th:each="trip : ${carReport.reportData}">
+                                    <td th:text="${trip.client}">Client</td>
+                                    <td th:text="${trip.startDate}">Departure date</td>
+                                    <td th:text="${trip.endDate}">Arrival date</td>
+                                    <td th:text="${trip.destination}">Destination</td>
+                                    <td th:text="${trip.distance}">Distance</td>
+                                    <td th:text="${trip.refuel}">Refueling</td>
+
+                                </tr>
+                            </tbody>
+                        </table><br/>
+                        <a>Samochód w miesiącu przejechał </a>
+                        <a th:text = "${carReport.sumDistance}"></a><a> km</a><br/>
+                        <a>Zatankowano </a>
+                        <a th:text = "${carReport.sumRefuel}"></a><a> litrów</a>
+                    </div>
+                </body>
+                </html>
